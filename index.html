@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ProductFlow | Product Management Workspace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+  <div class="brand"><div class="brand-mark">P</div><div><b>ProductFlow</b><small>PRODUCT WORKSPACE</small></div></div>
+  <div class="workspace-label">WORKSPACE</div>
+  <nav id="navigation">
+    <button class="nav-item active" data-page="dashboard"><span>▦</span> Overview</button>
+    <button class="nav-item" data-page="roadmap"><span>⌁</span> Roadmap</button>
+    <button class="nav-item" data-page="backlog"><span>☷</span> Backlog & Sprints</button>
+    <button class="nav-item" data-page="prd"><span>▤</span> PRD Library</button>
+    <button class="nav-item" data-page="feedback"><span>♡</span> User Feedback</button>
+    <button class="nav-item" data-page="analytics"><span>◫</span> Analytics</button>
+  </nav>
+  <div class="sidebar-bottom"><div class="help-card"><b>Product tip</b><p>Start with a clear problem statement before prioritizing a feature.</p></div><div class="profile"><div class="avatar">PM</div><div><b>Demo Product Manager</b><small>Workspace admin</small></div></div></div>
+</aside>
+<main class="main">
+<header class="topbar"><button class="mobile-menu" id="mobileMenu">☰</button><div class="crumb">Workspace <span>/</span> <b id="pageCrumb">Overview</b></div><div class="top-actions"><span class="live-dot">Demo workspace</span><button class="btn btn-light" id="exportBtn">↓ Export data</button></div></header>
+<div class="content">
+<section class="page active" id="page-dashboard">
+ <div class="page-heading"><div><div class="eyebrow">MONDAY, YOUR PRODUCT AT A GLANCE</div><h1>Good morning, Product Manager <span>✦</span></h1><p>Here’s what’s happening across your product workspace.</p></div><button class="btn btn-primary" data-action="new-task">＋ Create task</button></div>
+ <div class="stat-grid">
+  <article class="stat-card"><div class="stat-top"><span>Active initiatives</span><i>⌁</i></div><strong id="statInitiatives">4</strong><small class="positive">Across your roadmap</small></article>
+  <article class="stat-card"><div class="stat-top"><span>Open tasks</span><i>☷</i></div><strong id="statTasks">12</strong><small>In the product backlog</small></article>
+  <article class="stat-card"><div class="stat-top"><span>Completed tasks</span><i>✓</i></div><strong id="statDone">8</strong><small class="positive">Delivery progress</small></article>
+  <article class="stat-card"><div class="stat-top"><span>New feedback</span><i>♡</i></div><strong id="statFeedback">6</strong><small>Needs product review</small></article>
+ </div>
+ <div class="dashboard-grid">
+  <article class="panel"><div class="panel-heading"><div><h2>Delivery overview</h2><p>Task status across your workspace</p></div><button class="text-btn" data-go="backlog">View backlog ↗</button></div><div class="progress-summary"><div><strong id="completionRate">40%</strong><small>Tasks completed</small></div><div class="progress-track"><div id="completionBar" class="progress-fill" style="width:40%"></div></div></div><div class="legend"><span><i class="blue"></i> In progress</span><span><i class="green"></i> Done</span><span><i class="gray"></i> To do</span></div></article>
+  <article class="panel"><div class="panel-heading"><div><h2>Upcoming milestones</h2><p>What the team is working towards</p></div><button class="text-btn" data-go="roadmap">Roadmap ↗</button></div><div id="milestoneList" class="milestone-list"></div></article>
+ </div>
+ <article class="panel"><div class="panel-heading"><div><h2>Recently updated tasks</h2><p>Latest activity in your backlog</p></div><button class="text-btn" data-go="backlog">See all tasks ↗</button></div><div class="table-wrap"><table><thead><tr><th>TASK</th><th>STATUS</th><th>PRIORITY</th><th>ASSIGNEE</th></tr></thead><tbody id="recentTasks"></tbody></table></div></article>
+</section>
+<section class="page" id="page-roadmap">
+ <div class="page-heading"><div><div class="eyebrow">PLAN AND ALIGN</div><h1>Product roadmap</h1><p>Connect product strategy to outcomes and delivery.</p></div><button class="btn btn-primary" data-action="new-initiative">＋ New initiative</button></div>
+ <div class="filter-row"><span class="chip selected">All initiatives</span><span class="muted">Sample retail operations product roadmap</span></div><div id="roadmapList" class="roadmap-list"></div>
+</section>
+<section class="page" id="page-backlog">
+ <div class="page-heading"><div><div class="eyebrow">PLAN, PRIORITIZE, DELIVER</div><h1>Backlog & sprints</h1><p>Manage user stories, bugs and delivery work.</p></div><button class="btn btn-primary" data-action="new-task">＋ Add task</button></div>
+ <div class="board" id="taskBoard"></div>
+</section>
+<section class="page" id="page-prd">
+ <div class="page-heading"><div><div class="eyebrow">PRODUCT DOCUMENTATION</div><h1>PRD library</h1><p>Keep problem statements, requirements and acceptance criteria together.</p></div><button class="btn btn-primary" data-action="new-prd">＋ Create PRD</button></div>
+ <div id="prdList" class="prd-grid"></div>
+</section>
+<section class="page" id="page-feedback">
+ <div class="page-heading"><div><div class="eyebrow">VOICE OF THE CUSTOMER</div><h1>User feedback</h1><p>Capture customer needs and turn them into product opportunities.</p></div><button class="btn btn-primary" data-action="new-feedback">＋ Add feedback</button></div>
+ <div class="filter-row"><span class="muted">Feedback inbox · Review, prioritize and follow up</span></div>
+ <div class="panel"><div class="table-wrap"><table><thead><tr><th>FEEDBACK</th><th>CATEGORY</th><th>PRIORITY</th><th>STATUS</th><th></th></tr></thead><tbody id="feedbackTable"></tbody></table></div></div>
+</section>
+<section class="page" id="page-analytics">
+ <div class="page-heading"><div><div class="eyebrow">MEASURE WHAT MATTERS</div><h1>Product analytics</h1><p>A sample view of delivery and customer signals.</p></div><span class="tag">Sample data</span></div>
+ <div class="stat-grid"><article class="stat-card"><div class="stat-top"><span>Task completion</span><i>✓</i></div><strong id="analyticCompletion">40%</strong><small>Completed / total tasks</small></article><article class="stat-card"><div class="stat-top"><span>High priority work</span><i>↑</i></div><strong id="analyticHigh">3</strong><small>Tasks marked high priority</small></article><article class="stat-card"><div class="stat-top"><span>Feedback under review</span><i>♡</i></div><strong id="analyticReview">2</strong><small>Awaiting product decision</small></article><article class="stat-card"><div class="stat-top"><span>Initiatives</span><i>⌁</i></div><strong id="analyticInitiatives">4</strong><small>In the roadmap</small></article></div>
+ <div class="dashboard-grid"><article class="panel"><div class="panel-heading"><div><h2>Work by status</h2><p>Current task distribution</p></div></div><div id="statusBars" class="bar-chart"></div></article><article class="panel"><div class="panel-heading"><div><h2>Product health signals</h2><p>Areas to keep an eye on</p></div></div><div class="health-list"><div><span>Delivery execution</span><b class="positive">On track</b></div><div><span>Customer feedback</span><b class="warning">Review needed</b></div><div><span>Roadmap coverage</span><b class="positive">Planned</b></div><div><span>Data quality</span><b class="warning">Validate sample data</b></div></div></article></div>
+</section>
+<footer>ProductFlow Demo · Built for product management practice <span>Data is saved in this browser</span></footer>
+</div></main></div>
+<div class="modal-backdrop" id="modalBackdrop"><div class="modal" role="dialog" aria-modal="true"><div class="modal-head"><div><div class="eyebrow">PRODUCT WORKSPACE</div><h2 id="modalTitle">Create item</h2></div><button class="icon-btn" id="closeModal">×</button></div><form id="itemForm"><div id="modalFields"></div><div class="modal-actions"><button type="button" class="btn btn-light" id="cancelModal">Cancel</button><button class="btn btn-primary" type="submit">Save item</button></div></form></div></div>
+<div class="toast" id="toast"></div>
+<script src="app.js"></script>
+</body></html>
